@@ -6,7 +6,7 @@
 /*   By: salhali <salhali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 15:39:21 by salhali           #+#    #+#             */
-/*   Updated: 2026/01/06 18:18:28 by salhali          ###   ########.fr       */
+/*   Updated: 2026/01/06 21:29:01 by salhali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,32 +30,42 @@ bool	check_comma(char *str)
 	return (true);
 }
 
-void	parse_rgb(t_map *map)
+void parse_rgb(t_map *map)
 {
-	char	**split;
-	int		i;
+    char **split;
+    int   i;
 
-	split = ft_split(map->floor_color, ',');
-	i = 0;
-	while (split[i])
-		i++;
-	if (i != 3)
-		error_print("Invalid color format", map);
-	map->floor_rgb.r = ft_atomic_atoi(split[0]);
-	map->floor_rgb.g = ft_atomic_atoi(split[1]);
-	map->floor_rgb.b = ft_atomic_atoi(split[2]);
-	free_split(split);
-	split = ft_split(map->ceiling_color, ',');
-	i = 0;
-	while (split[i])
-		i++;
-	if (i != 3)
-		error_print("Invalid color format", map);
-	map->ceiling_rgb.r = ft_atomic_atoi(split[0]);
-	map->ceiling_rgb.g = ft_atomic_atoi(split[1]);
-	map->ceiling_rgb.b = ft_atomic_atoi(split[2]);
-	free_split(split);
+    /* ---------- FLOOR ---------- */
+    split = ft_split(map->floor_color, ',');
+    i = 0;
+    while (split[i])
+        i++;
+    if (i != 3)
+    {
+        free_split(split);
+        error_print("Invalid color format", map);
+    }
+    map->floor_rgb.r = ft_atomic_atoi(split[0]);
+    map->floor_rgb.g = ft_atomic_atoi(split[1]);
+    map->floor_rgb.b = ft_atomic_atoi(split[2]);
+    free_split(split);            
+
+    /* ---------- CEILING ---------- */
+    split = ft_split(map->ceiling_color, ',');
+    i = 0;
+    while (split[i])
+        i++;
+    if (i != 3)
+    {
+        free_split(split);
+        error_print("Invalid color format", map);
+    }
+    map->ceiling_rgb.r = ft_atomic_atoi(split[0]);
+    map->ceiling_rgb.g = ft_atomic_atoi(split[1]);
+    map->ceiling_rgb.b = ft_atomic_atoi(split[2]);
+    free_split(split);              
 }
+
 
 bool	check_rgb(t_rgb rgb)
 {
@@ -65,25 +75,19 @@ bool	check_rgb(t_rgb rgb)
 	return (true);
 }
 
-void	parser_colors(t_map *map)
+void parser_colors(t_map *map)
 {
-	map->floor_color = ft_substr_plus(map->floor_color);
-	map->ceiling_color = ft_substr_plus(map->ceiling_color);
-	if (!check_comma(map->floor_color) || !check_comma(map->ceiling_color))
-	{
-		free(map->floor_color);
-		free(map->ceiling_color);
-		free_map_textures(map);
-		ft_free_all();
-		error_print("Invalid color format", map);
-	}
-	parse_rgb(map);
-	if (!check_rgb(map->floor_rgb)
-		|| !check_rgb(map->ceiling_rgb))
-	{
-		free_map_textures(map);
-		free_map_colors(map);
-		ft_free_all();
-		error_print("Invalid color rangeee", map);
-	}
+    map->floor_color = ft_substr_plus(map->floor_color);
+    map->ceiling_color = ft_substr_plus(map->ceiling_color);
+    if (!check_comma(map->floor_color)
+        || !check_comma(map->ceiling_color))
+    {
+        error_print("Invalid color format", map);
+    }
+    parse_rgb(map);
+    if (!check_rgb(map->floor_rgb)
+        || !check_rgb(map->ceiling_rgb))
+    {
+        error_print("Invalid color range", map);
+    }
 }

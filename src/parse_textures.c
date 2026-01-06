@@ -6,7 +6,7 @@
 /*   By: salhali <salhali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 23:37:36 by salhali           #+#    #+#             */
-/*   Updated: 2026/01/06 18:15:13 by salhali          ###   ########.fr       */
+/*   Updated: 2026/01/06 21:37:09 by salhali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_substr_plus(char *string)
 	while (string[i] && ft_isspace(string[i]))
 		i++;
 	str = ft_substr(string, i, ft_strlen(string));
-	free(string);
+	// free(string);
 	r_str = ft_strtrim1(str, " ");
 	free(str);
 	return (r_str);
@@ -55,14 +55,7 @@ void	parse_textures(t_map *map)
 	map->east_texture = ft_substr_plus(tmp);
 	if (!check_path(map->north_texture) || !check_path(map->south_texture)
 		|| !check_path(map->west_texture) || !check_path(map->east_texture))
-	{
-		ft_free_all();
-		free(map->north_texture);
-		free(map->south_texture);
-		free(map->east_texture);
-		free(map->west_texture);
 		error_print("Invalid path\n", map);
-	}
 }
 
 int	ft_strcmp(const char *dest, const char *src)

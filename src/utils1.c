@@ -6,7 +6,7 @@
 /*   By: salhali <salhali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 15:45:01 by salhali           #+#    #+#             */
-/*   Updated: 2026/01/06 18:21:25 by salhali          ###   ########.fr       */
+/*   Updated: 2026/01/06 21:39:04 by salhali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,31 +83,36 @@ bool	is_all_whitespace(char *str)
 	return (true);
 }
 
-char	*ft_strtrim1(char const *s1, char const *set)
+char *ft_strtrim1(char const *s1, char const *set)
 {
-	char	*str;
-	size_t	start;
-	size_t	end;
-	size_t	i;
+    char    *str;
+    size_t  start;
+    size_t  end;
+    size_t  i;
 
-	if (!s1 || !set)
-		return (NULL);
-	end = ft_strlen(s1);
-	start = 0;
-	while (end > start && is_set(s1[end - 1], set))
-		end--;
-	while (s1[start] != '\0' && is_set(s1[start], set))
-		start++;
-	if (start >= end)
-		return (ft_strdup(""));
-	str = ft_malloc(end - start + 1);
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (start < end)
-	{
-		str[i++] = s1[start++];
-	}
-	str[i] = '\0';
-	return (str);
+    if (!s1 || !set)
+        return (NULL);
+
+    end = ft_strlen(s1);
+    start = 0;
+
+    while (end > start && is_set(s1[end - 1], set))
+        end--;
+    while (s1[start] && is_set(s1[start], set))
+        start++;
+
+    if (start >= end)
+    {
+        str = ft_malloc(1);
+        str[0] = '\0';
+        return (str);
+    }
+
+    str = ft_malloc(end - start + 1);
+    i = 0;
+    while (start < end)
+        str[i++] = s1[start++];
+    str[i] = '\0';
+    return (str);
 }
+
