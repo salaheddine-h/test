@@ -6,7 +6,7 @@
 /*   By: salhali <salhali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 21:03:22 by salhali           #+#    #+#             */
-/*   Updated: 2026/01/06 17:27:36 by salhali          ###   ########.fr       */
+/*   Updated: 2026/01/06 18:06:56 by salhali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	init_keys(t_keys *keys)
 void	init_game_resources(t_game *game)
 {
 	t_map	*map;
+
 	game->rays = ft_malloc(sizeof(t_ray) * SCREEN_WIDTH);
 	if (!game->rays)
 		error_print("Failed to allocate rays", map);
@@ -48,7 +49,7 @@ void	init_game_resources(t_game *game)
 void	init_mlx(t_game *game)
 {
 	t_map	*map;
-	
+
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		error_print("Failed to initialize mlx", map);

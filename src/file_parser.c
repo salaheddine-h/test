@@ -6,30 +6,11 @@
 /*   By: salhali <salhali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 18:05:26 by salhali           #+#    #+#             */
-/*   Updated: 2026/01/06 17:24:50 by salhali          ###   ########.fr       */
+/*   Updated: 2026/01/06 18:13:52 by salhali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
-
-// char	*ft_strdup2(const char *s)
-// {
-// 	char	*dest;
-// 	int		i;
-
-// 	dest = malloc(sizeof(char) * (ft_strlen(s) + 1));
-// 	if (!dest)
-// 		return (NULL);
-// 	i = 0;
-// 	while (s[i])
-// 	{
-// 		dest[i] = s[i];
-// 		i++;
-// 	}
-// 	dest[i] = '\0';
-// 	return (dest);
-// }
-// map->north_texture = ft_strtrim(line + 3, " \t");
 
 void	save_textures(char *line, t_map *map)
 {
@@ -75,7 +56,6 @@ void	save_texture_helper(char *line, t_map *map)
 
 void	save_colors(char *line, t_map *map)
 {
-	// printf("line = %s\n", line);
 	if (!line || !ft_strlen(line))
 		return ;
 	if (ft_strnstr(line, "F ", 2))

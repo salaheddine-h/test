@@ -6,7 +6,7 @@
 /*   By: salhali <salhali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 15:39:21 by salhali           #+#    #+#             */
-/*   Updated: 2026/01/06 17:26:15 by salhali          ###   ########.fr       */
+/*   Updated: 2026/01/06 18:18:28 by salhali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,23 +73,16 @@ void	parser_colors(t_map *map)
 	{
 		free(map->floor_color);
 		free(map->ceiling_color);
-		free(map->north_texture);
-		free(map->south_texture);
-		free(map->west_texture);
-		free(map->east_texture);
+		free_map_textures(map);
 		ft_free_all();
-		error_print("Invalid color formatttttttttttttttttt", map);
+		error_print("Invalid color format", map);
 	}
 	parse_rgb(map);
 	if (!check_rgb(map->floor_rgb)
 		|| !check_rgb(map->ceiling_rgb))
 	{
-				free(map->north_texture);
-		free(map->south_texture);
-		free(map->west_texture);
-		free(map->east_texture);
-		free(map->floor_color);
-		free(map->ceiling_color);
+		free_map_textures(map);
+		free_map_colors(map);
 		ft_free_all();
 		error_print("Invalid color rangeee", map);
 	}

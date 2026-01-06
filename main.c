@@ -6,7 +6,7 @@
 /*   By: salhali <salhali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 15:59:41 by salhali           #+#    #+#             */
-/*   Updated: 2026/01/06 17:24:06 by salhali          ###   ########.fr       */
+/*   Updated: 2026/01/06 18:12:42 by salhali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,9 @@ void	load_textures_helper(t_game *game, t_texture *texture, char *path)
 void	load_textures(t_game *game)
 {
 	int	i;
-	t_map *map;
 
 	if (!game)
-		error_print("game is NULL", map);
+		error_print("game is NULL", game->map);
 	load_textures_helper(game, &game->wall_texture[0],
 		game->map->north_texture);
 	load_textures_helper(game, &game->wall_texture[1],
@@ -42,7 +41,7 @@ void	load_textures(t_game *game)
 	while (i < 4)
 	{
 		if (!game->wall_texture[i].img)
-			error_print("Error in loading wall texture", map);
+			error_print("Error in loading wall texture", game->map);
 		i++;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fahosni <fahosni@student.42.fr>            +#+  +:+       +#+        */
+/*   By: salhali <salhali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 15:46:01 by salhali           #+#    #+#             */
-/*   Updated: 2025/12/08 12:05:39 by fahosni          ###   ########.fr       */
+/*   Updated: 2026/01/06 18:07:37 by salhali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,18 @@ bool	check_valid_map_help(char **map2d, int i, int j)
 			return (false);
 	}
 	return (true);
+}
+
+int	is_set(char c, const char *set)
+{
+	size_t	i;
+
+	i = 0;
+	while (set[i] != '\0')
+	{
+		if (set[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
 }

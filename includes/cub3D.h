@@ -6,7 +6,7 @@
 /*   By: salhali <salhali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 15:59:59 by salhali           #+#    #+#             */
-/*   Updated: 2026/01/06 17:27:09 by salhali          ###   ########.fr       */
+/*   Updated: 2026/01/06 18:19:08 by salhali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,12 +235,13 @@ void				free_map(t_map *map);
 void				load_textures(t_game *game);
 void				load_textures_helper(t_game *game, t_texture *texture,
 						char *path);
-void				free_map_colors(t_map *map);
-void				free_map_textures(t_map *map);
 void				free_map_array(t_map *map);
 void				destroy_textures(t_game *game);
 void				destroy_mlx_resources(t_game *game);
 void				add_allocation(void *ptr);
 void				free_all_allocations(void);
-char	*ft_strdup2(const char *s);
+char				*ft_strdup2(const char *s);
+int					is_set(char c, const char *set);
+void				free_map_textures(t_map *map);
+void				ree_map_colors(t_map *map);
 #endif

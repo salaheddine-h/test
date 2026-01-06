@@ -6,7 +6,7 @@
 /*   By: salhali <salhali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 19:10:00 by salhali           #+#    #+#             */
-/*   Updated: 2026/01/06 17:31:06 by salhali          ###   ########.fr       */
+/*   Updated: 2026/01/06 18:10:37 by salhali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ char	*get_next_line(int fd)
 		}
 		return (NULL);
 	}
-	
 	if (BUFFER_SIZE <= 0 && BUFFER_SIZE >= 2147483648)
 		return (NULL);
 	line = ft_get_line(fd, line);
