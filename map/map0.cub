@@ -1,7 +1,7 @@
-NO textures/test/north.xpm
-SO textures/test/south.xpm
-WE 
-EA textures/test/east.xpm
+NO /home/salhali/Desktop/test/test/textures/test/north.xpm
+SO /home/salhali/Desktop/test/test/textures/test/south.xpm
+WE /home/salhali/Desktop/test/test/textures/test/west.xpm
+EA /home/salhali/Desktop/test/test/textures/test/east.xpm
 
 F 20,20,20
 C 66,20,200

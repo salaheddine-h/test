@@ -6,7 +6,7 @@
 /*   By: salhali <salhali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 15:41:53 by salhali           #+#    #+#             */
-/*   Updated: 2025/12/07 18:58:29 by salhali          ###   ########.fr       */
+/*   Updated: 2026/01/06 17:25:44 by salhali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	set_player_angle(t_map *map)
 void	init_player_position(t_map *map, int i, int j)
 {
 	if (map->player.dir)
-		error_print("Duplicate player");
+		error_print("Duplicate player", map);
 	map->player.dir = map->map[i][j];
 	map->player.x = j * TILE_SIZE + TILE_SIZE / 2;
 	map->player.y = i * TILE_SIZE + TILE_SIZE / 2;
@@ -58,7 +58,7 @@ void	save_player(t_map *map)
 		i++;
 	}
 	if (!map->player.dir)
-		error_print("Player not found");
+		error_print("Player not found", map);
 }
 
 void	map_parser(int fd, t_map *map)
@@ -78,7 +78,7 @@ void	map_parser(int fd, t_map *map)
 		free(line);
 	}
 	if (check_map(map1d) == false)
-		error_print("Invalid map\n");
+		error_print("Invalid map\n", map);
 	map->map = ft_split(map1d, '\n');
 	save_player(map);
 	free(map1d);

@@ -6,7 +6,7 @@
 /*   By: salhali <salhali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 18:39:54 by salhali           #+#    #+#             */
-/*   Updated: 2025/12/08 16:41:35 by salhali          ###   ########.fr       */
+/*   Updated: 2026/01/06 18:03:56 by salhali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ void	free_map(t_map *map)
 	if (!map)
 		return ;
 	free_map_array(map);
-	free_map_textures(map);
-	free_map_colors(map);
 }
 
 void	cleanup_game(t_game *game)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fahosni <fahosni@student.42.fr>            +#+  +:+       +#+        */
+/*   By: salhali <salhali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 15:59:59 by salhali           #+#    #+#             */
-/*   Updated: 2025/12/08 12:25:26 by fahosni          ###   ########.fr       */
+/*   Updated: 2026/01/06 17:27:09 by salhali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ typedef struct s_game
 t_alloc				**g_allocs(void);
 void				printf_all_struct(t_map *map);
 void				free_split(char **arr);
-void				error_print(char *str);
+void				error_print(char *str, t_map *map);
 int					ft_strcmp(const char *dest, const char *src);
 void				start_parsing(int ac, char *av, t_map *map);
 void				map_init(t_map *map);

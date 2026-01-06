@@ -6,7 +6,7 @@
 /*   By: salhali <salhali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 20:13:55 by salhali           #+#    #+#             */
-/*   Updated: 2025/09/01 18:12:43 by salhali          ###   ########.fr       */
+/*   Updated: 2026/01/06 18:00:45 by salhali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	{
 		str[i++] = s1[start++];
 	}
-	s1 = NULL;
 	str[i] = '\0';
 	return (str);
 }

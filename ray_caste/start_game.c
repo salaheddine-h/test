@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fahosni <fahosni@student.42.fr>            +#+  +:+       +#+        */
+/*   By: salhali <salhali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 21:03:22 by salhali           #+#    #+#             */
-/*   Updated: 2025/12/08 12:15:37 by fahosni          ###   ########.fr       */
+/*   Updated: 2026/01/06 17:27:36 by salhali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,24 +34,27 @@ void	init_keys(t_keys *keys)
 
 void	init_game_resources(t_game *game)
 {
+	t_map	*map;
 	game->rays = ft_malloc(sizeof(t_ray) * SCREEN_WIDTH);
 	if (!game->rays)
-		error_print("Failed to allocate rays");
+		error_print("Failed to allocate rays", map);
 	game->img = mlx_new_image(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	if (!game->img)
-		error_print("Failed to create image");
+		error_print("Failed to create image", map);
 	game->addr = mlx_get_data_addr(game->img, &game->bpp, &game->line_len,
 			&game->endian);
 }
 
 void	init_mlx(t_game *game)
 {
+	t_map	*map;
+	
 	game->mlx = mlx_init();
 	if (!game->mlx)
-		error_print("Failed to initialize mlx");
+		error_print("Failed to initialize mlx", map);
 	game->win = mlx_new_window(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D");
 	if (!game->win)
-		error_print("mlx_new_window failed");
+		error_print("mlx_new_window failed", map);
 }
 
 void	start_game(t_map *map)

@@ -6,7 +6,7 @@
 /*   By: salhali <salhali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 23:37:36 by salhali           #+#    #+#             */
-/*   Updated: 2025/12/07 18:30:39 by salhali          ###   ########.fr       */
+/*   Updated: 2026/01/06 18:01:23 by salhali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,27 +26,49 @@ static int	is_set(char c, const char *set)
 	return (0);
 }
 
+char	*ft_strtrim1(char const *s1, char const *set)
+{
+	char	*str;
+	size_t	start;
+	size_t	end;
+	size_t	i;
+
+	if (!s1 || !set)
+		return (NULL);
+	end = ft_strlen(s1);
+	start = 0;
+	while (end > start && is_set(s1[end - 1], set))
+		end--;
+	while (s1[start] != '\0' && is_set(s1[start], set))
+		start++;
+	if (start >= end)
+		return (ft_strdup(""));
+	str = ft_malloc(end - start + 1);
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (start < end)
+	{
+		str[i++] = s1[start++];
+	}
+	str[i] = '\0';
+	return (str);
+}
 
 char	*ft_substr_plus(char *string)
 {
 	int		i;
 	char	*str;
 	char	*r_str;
-
+	
 	i = 0;
 	if (!string)
 		return (NULL);
 	while (string[i] && ft_isspace(string[i]))
 		i++;
-	while (string[i] && !ft_isspace(string[i]))
-		i++;
-	while (string[i] && ft_isspace(string[i]))
-		i++;
 	str = ft_substr(string, i, ft_strlen(string));
 	free(string);
-	r_str = ft_strtrim(str, " ");
-	if(r_str == NULL)
-		return(NULL);
+	r_str = ft_strtrim1(str, " ");
 	free(str);
 	return (r_str);
 }
@@ -77,11 +99,12 @@ void	parse_textures(t_map *map)
 	if (!check_path(map->north_texture) || !check_path(map->south_texture)
 		|| !check_path(map->west_texture) || !check_path(map->east_texture))
 	{
+		ft_free_all();
 		free(map->north_texture);
 		free(map->south_texture);
 		free(map->east_texture);
 		free(map->west_texture);
-		error_print("Invalid path");
+		error_print("Invalid path\n", map);
 	}
 }
 

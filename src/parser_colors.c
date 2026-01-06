@@ -6,7 +6,7 @@
 /*   By: salhali <salhali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 15:39:21 by salhali           #+#    #+#             */
-/*   Updated: 2025/12/07 18:39:25 by salhali          ###   ########.fr       */
+/*   Updated: 2026/01/06 17:26:15 by salhali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	parse_rgb(t_map *map)
 	while (split[i])
 		i++;
 	if (i != 3)
-		error_print("Invalid color format");
+		error_print("Invalid color format", map);
 	map->floor_rgb.r = ft_atomic_atoi(split[0]);
 	map->floor_rgb.g = ft_atomic_atoi(split[1]);
 	map->floor_rgb.b = ft_atomic_atoi(split[2]);
@@ -50,7 +50,7 @@ void	parse_rgb(t_map *map)
 	while (split[i])
 		i++;
 	if (i != 3)
-		error_print("Invalid color format");
+		error_print("Invalid color format", map);
 	map->ceiling_rgb.r = ft_atomic_atoi(split[0]);
 	map->ceiling_rgb.g = ft_atomic_atoi(split[1]);
 	map->ceiling_rgb.b = ft_atomic_atoi(split[2]);
@@ -78,7 +78,7 @@ void	parser_colors(t_map *map)
 		free(map->west_texture);
 		free(map->east_texture);
 		ft_free_all();
-		error_print("Invalid color formatttttttttttttttttt");
+		error_print("Invalid color formatttttttttttttttttt", map);
 	}
 	parse_rgb(map);
 	if (!check_rgb(map->floor_rgb)
@@ -91,6 +91,6 @@ void	parser_colors(t_map *map)
 		free(map->floor_color);
 		free(map->ceiling_color);
 		ft_free_all();
-		error_print("Invalid color rangeee");
+		error_print("Invalid color rangeee", map);
 	}
 }
